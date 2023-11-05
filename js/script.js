@@ -11,7 +11,7 @@ for (let i = 0; i < arrayImage.length; i++) {
 
 console.log(stringImageForHtml);
 
-// selezione dove devo inserire la stringa
+// seleziono dove devo inserire la stringa
 const divSlider = document.querySelector(".items");
 
 // inserisco la stringa
@@ -31,6 +31,24 @@ document.querySelector(".next").addEventListener
 ("click", function(event)
 {
     event.preventDefault();
+    next();
+})
+
+document.querySelector(".prev").addEventListener
+("click", function(event)
+{
+    event.preventDefault();
+    prec();
+})
+
+let interval  = setInterval(next, 3000);
+
+document.querySelector(".items").addEventListener("mouseover", function() {
+    clearInterval(interval);
+})
+
+// FUNCTIONS
+function next(){
     if(index < arrayImage.length - 1) {
         slide[index].classList.remove("active");
         index++;
@@ -40,12 +58,9 @@ document.querySelector(".next").addEventListener
         index = 0;
         slide[index].classList.add("active");
     }
-})
+}
 
-document.querySelector(".prev").addEventListener
-("click", function(event)
-{
-    event.preventDefault();
+function prec() {
     if(index > 0){
         slide[index].classList.remove("active");
         index--;
@@ -55,4 +70,4 @@ document.querySelector(".prev").addEventListener
         index = arrayImage.length -1;
         slide[index].classList.add("active");        
     }
-})
+}
