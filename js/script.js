@@ -31,20 +31,28 @@ document.querySelector(".next").addEventListener
 ("click", function(event)
 {
     event.preventDefault();
+    clearInterval(interval);
     next();
+    interval  = setInterval(next, 3000);
 })
 
 document.querySelector(".prev").addEventListener
 ("click", function(event)
 {
     event.preventDefault();
+    clearInterval(interval);
     prec();
+    interval  = setInterval(next, 3000);
 })
 
 let interval  = setInterval(next, 3000);
 
 document.querySelector(".items").addEventListener("mouseover", function() {
     clearInterval(interval);
+})
+
+document.querySelector(".items").addEventListener("mouseleave", function() {
+    interval  = setInterval(next, 3000);
 })
 
 // FUNCTIONS
